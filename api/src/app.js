@@ -2,7 +2,8 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const routes = require('./routes/index.js');
+const routes = require('./routes/countries.js');
+const routes2 = require('./routes/activities')
 
 require('./db.js');
 
@@ -11,7 +12,7 @@ const server = express();
 server.name = 'API';
 
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
-server.use(bodyParser.json({ limit: '50mb' }));
+server.use(bodyParser.json({ limit: '50mb' })); //{ limit: '50mb' }
 server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
@@ -22,7 +23,18 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use('/', routes);
+server.use('/countries', routes);
+server.use('/activities', routes2);
+server.get('/', (req,res)=>{
+  res.json({
+    rutas:[
+      "GET /countries/  TODOS LOS PAISES",
+      "GET /countries?name={name}  ",
+      "GET /countries/:countryId TRAE CON ACTIVIDADES",
+      "POST /activities  body={name, difficulty, duration, season, countries}"
+    ]
+  })
+})
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
