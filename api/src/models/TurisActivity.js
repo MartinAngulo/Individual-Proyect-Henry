@@ -8,15 +8,19 @@ module.exports = (sequelize) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            set(value){
+            set(value) {
                 this.setDataValue('name', value.toUpperCase())
-              }
+            },
+            validate: {
+                len:[3,15]
+            }
         },
         difficulty: {
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
-                len: [1 - 5]
+                min: 1,
+                max: 5
             }
         },
         duration: {

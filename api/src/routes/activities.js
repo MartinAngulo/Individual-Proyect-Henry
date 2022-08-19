@@ -54,7 +54,9 @@ router.post('/', async (req, res) => {
         } else {
             await activity.addCountries(countries)
         }
-        return res.status(200).send(`${name} has been added to Tourist Activities`)
+        return res.status(200)
+        .json(activity)
+        // .send(`${name} has been added to Tourist Activities`)
     }
     catch (err) {
         res.send(err);

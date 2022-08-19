@@ -25,16 +25,7 @@ server.use((req, res, next) => {
 
 server.use('/countries', routes);
 server.use('/activities', routes2);
-server.get('/', (req,res)=>{
-  res.json({
-    rutas:[
-      "GET /countries/  TODOS LOS PAISES",
-      "GET /countries?name={name}  ",
-      "GET /countries/:countryId TRAE CON ACTIVIDADES",
-      "POST /activities  body={name, difficulty, duration, season, countries}"
-    ]
-  })
-})
+
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars

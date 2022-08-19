@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { Router } = require('express');
+const { Op } = require('sequelize')
 const axios = require('axios');
 const { COUNTRY_API, DB_PASSWORD } = process.env;
 const { Country, TurisActivity } = require('../db');
@@ -15,7 +16,7 @@ const getAllCountries = async () => {
     if (success.length > 0) return 'DB already loaded';
 
     //Otherwise, request all data to the API
-    else {          
+    else {
         const allCountries = await axios.get(`${COUNTRY_API}/all`); //GET request to Country API
         let info = []; //New array to save the response request fix
 
@@ -43,24 +44,20 @@ const getAllCountries = async () => {
 // }
 
 router.get('', async (req, res) => {
-    await getAllCountries();
+    // await getAllCountries();
     const countriesDB = await Country.findAll();
     const { name } = req.query;
 
     try {
         if (name) {
-            const country = await Country.findOne({
+            const country = await Country.findAll({
                 where: {
-                    name: name.toUpperCase()
+                    name: {
+                        [Op.startsWith]: name.toUpperCase()
+                    }
                 }
             });
-            return (
-                country
-                    ?
-                    res.status(200).json(country)
-                    :
-                    res.status(200).json(`The country ${name} was not found`)
-            )
+            return res.status(200).json(country);
 
         } else {
             return res.status(200).json(countriesDB);
@@ -72,16 +69,16 @@ router.get('', async (req, res) => {
 }); // This route returns all countries from DB or the country with the name receive from query
 
 router.get('/:countryId', async (req, res) => {
-    await getAllCountries();
+    // await getAllCountries();
     const countryId = req.params.countryId.toUpperCase();
 
-    if(countryId.length>3)return res.status(400).send(`The country Id mustn't have more than 3 letters`)
+    if (countryId.length > 3) return res.status(400).send(`The country Id mustn't have more than 3 letters`)
     try {
         const country = await Country.findByPk(
             countryId,
             { include: TurisActivity }
         );
-        
+
         return (
             country
                 ?
