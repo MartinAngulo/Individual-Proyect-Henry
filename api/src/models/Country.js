@@ -36,8 +36,10 @@ module.exports = (sequelize) => {
     },
     population: {
       type: DataTypes.INTEGER,
+    },
+    latlng: {
+      type:DataTypes.ARRAY(DataTypes.FLOAT)
     }
-
   }, {
     timestamps: false
   });

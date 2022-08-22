@@ -21,13 +21,14 @@ const getAllCountries = async () => {
             info.push({
                 'id': country.cca3,
                 'name': country.name.common,
-                'imgFlag': country.flags[1],
+                'imgFlag': country.flags[0],
                 'continent': country.region,
                 'capital':
                     country.capital ? country.capital[0] : 'no se encontro',
                 'subregion': country.subregion,
                 'area': country.area,
-                'population': country.population
+                'population': country.population,
+                'latlng': country.latlng
             })
         }); //This added all countries to New Array
         // console.log(info);

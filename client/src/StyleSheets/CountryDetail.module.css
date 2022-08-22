@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+    position: relative;
+    top: 115px;
+    height: 90vh;
+    width: 100vw;
+    justify-content: center;
+    background-color: black;
+    
+}
+
+.card  {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    width: 65vw;
+    align-items: center;
+    background-color: white;
+    height: 70vh;
+}
+
+.detail {
+    width: 50vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    font-size: 4rem;
+}
+
+.flag {
+    height: 80px;
+    padding-left: 50px;
+}
+
+.parra {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.text {
+    font-size: 1.2rem;
+}
+
+.iframe {
+    height: 20vw;
+    width: 30vw;
+    margin-left: 50px;
+}
+
+.turis {
+    font-size: 1.5rem;
+    margin: 10px 0 10px 0;
+}
+
+.showAct {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-self: center;
+}
+
+.atv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    align-items: center;
+    width: 50vw;
+}

@@ -5,6 +5,7 @@ import Home from './components/Home'
 import CreateActivity from './components/CreateActivity';
 import Nav from './components/Nav';
 import CountryDetail from './components/CountryDetail';
+import ChargePage from './components/ChargePage';
 
 
 const NavBar = ()=>{
@@ -26,6 +27,7 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/create' element={<CreateActivity />} />
             <Route path='/detail/:countryId' element={<CountryDetail />} />
+            <Route path='/charge' element={<ChargePage />}/>
           </Route>
           <Route path='*' element={<Navigate to={'/'}/>}/>
         </Routes>

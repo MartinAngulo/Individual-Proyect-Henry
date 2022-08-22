@@ -1,28 +1,38 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { Link, useLocation } from 'react-router-dom'
-import { resetShow } from '../store/countriesShow';
+import { useNavigate } from 'react-router-dom'
+import { resetFilters, resetShow } from '../store/countriesShow';
 import SearchBar from './SearchBar';
+import styles from '../StyleSheets/Nav.module.css';
+import Filters from './Filters'
 
 export default function Nav() {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const handleClick = () => {
+  const navigate = useNavigate();
+  const handleClick = (path) => {
     dispatch(
       resetShow()
     )
+    dispatch(
+      resetFilters()
+    )
+    navigate(`/${path}`);
   }
+
   return (
-    <div>
-      <h1>AQUI VA LA NAVBAR</h1>
-      <div>
-        <Link to={'/home'} onClick={handleClick}>HOME</Link>
-        {
-          location.pathname === '/home'&&  
-          <><SearchBar />
-          <Link to={'/create'}>Activity Creator</Link></>
-        }
+    <div className={styles.cont}>
+      <div className={styles.cont2}>
+        <div className={styles.searchBar}>
+          <SearchBar />
+        </div>
+        <h3
+        className={styles.h3}
+        onClick={(e)=>handleClick('home')}>HOME</h3>
+        <h3
+        className={styles.h3}
+        onClick={(e)=>handleClick('create')}>ACTIVITY CREATOR</h3>
       </div>
+      <Filters />
     </div>
   )
 }

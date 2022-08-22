@@ -1,12 +1,28 @@
 require('dotenv').config();
-const { Router, response } = require('express');
+const { Router } = require('express');
 const axios = require('axios');
 const { COUNTRY_API, DB_PASSWORD } = process.env;
-const { TurisActivity, CountryActivity } = require('../db');
+const { TurisActivity, CountryActivity, Country } = require('../db');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
 const router = Router();
+
+router.get('/', async (req, res)=>{
+    res.status(201).json(await TurisActivity.findAll({include: Country}));
+});
+
+// router.get('/season/:name', async(req, res)=>{
+
+//     const {name} = req.params;
+
+//     res.status(201).json(await TurisActivity.findAll({
+//         where: {
+//             season: name,
+//         },
+//         include: ['Country']
+//     }))
+// });
 
 router.post('/', async (req, res) => {
     const { name, difficulty, duration, season } = req.body;
@@ -61,7 +77,7 @@ router.post('/', async (req, res) => {
     catch (err) {
         res.send(err);
     }
-})
+});
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
