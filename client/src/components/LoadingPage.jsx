@@ -14,7 +14,7 @@ export default function LoadingPage({ url }) {
         <div className={styles.cont}>
             <i className={styles.loader}></i>
             <div className={styles.cont2}>
-                <h1>Loading the App</h1>
+                <h3>Loading the App</h3>
                 <h3>Please wait a moment</h3>
             </div>
         </div>

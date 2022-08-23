@@ -37,13 +37,13 @@ export default function CreateActivity() {
   //   setSelected(selectedOption);
   // } alert
 
-  const inputsValidation = () => {
-    if (name.length < 3 || !dif.value || !dura.value || !season.value || country.length === 0) return false;
-    else return true;
-  }
-  const clear = () => {
-    if (name.length > 0 || dif.value || dura.value || season.value || country.length > 0) return true;
+  const disableSubmit = () => {
+    if (name.length < 3 || !dif.value || !dura.value || !season.value || country.length === 0) return true;
     else return false;
+  }
+  const disableClear = () => {
+    if (name.length > 0 || dif.value || dura.value || season.value || country.length > 0) return false;
+    else return true;
   }
 
   const onClick = () => {
@@ -103,7 +103,6 @@ export default function CreateActivity() {
               options={config.dificulty}
               onChange={(e) => handleChange(e, setDif)}
             />
-            <br />
 
             <label className={styles.label}>Duration: </label>
             <Select
@@ -113,7 +112,6 @@ export default function CreateActivity() {
               options={config.duration}
               onChange={(e) => handleChange(e, setDura)}
             />
-            <br />
 
             <label className={styles.label}>Season: </label>
             <Select
@@ -123,7 +121,6 @@ export default function CreateActivity() {
               options={config.seasonsOptions}
               onChange={(e) => handleChange(e, setSeason)}
             />
-            <br />
 
             <label className={styles.label}>Countries: </label>
             <Select
@@ -136,8 +133,14 @@ export default function CreateActivity() {
               onChange={(e) => handleChange(e, setCountry)}
             />
             <div className={styles.btns}>
-              {inputsValidation() && <input className={styles.button} type="submit" value="Create" />}
-              {clear() && <button className={styles.button} onClick={() => onClick()}>Clear</button>}
+              <button
+              className={disableSubmit()?styles.block:styles.button}
+              disabled={disableSubmit()}
+              type="submit">Create</button>
+              <button
+              className={disableClear()?styles.block:styles.button}
+              disabled={disableClear()}
+              onClick={() => onClick()}>Clear</button>
             </div>
 
           </form>

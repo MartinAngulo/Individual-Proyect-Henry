@@ -1,14 +1,23 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { resetFilters, resetShow } from '../store/countriesShow';
 import SearchBar from './SearchBar';
 import styles from '../StyleSheets/Nav.module.css';
 import Filters from './Filters'
 
 export default function Nav() {
+
+  const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const disabled = (path)=>{
+    if(location.pathname===`/${path}`){
+      return true;
+    }
+    else return false;
+  } 
   const handleClick = (path) => {
     dispatch(
       resetShow()
@@ -25,12 +34,14 @@ export default function Nav() {
         <div className={styles.searchBar}>
           <SearchBar />
         </div>
-        <h3
-        className={styles.h3}
-        onClick={(e)=>handleClick('home')}>HOME</h3>
-        <h3
-        className={styles.h3}
-        onClick={(e)=>handleClick('create')}>ACTIVITY CREATOR</h3>
+        <button
+        className={disabled('home')?styles.block:styles.h3}
+        disabled={disabled('home')}
+        onClick={(e)=>handleClick('home')}>HOME</button>
+        <button
+        className={disabled('create')?styles.block:styles.h3}
+        disabled={disabled('create')}
+        onClick={(e)=>handleClick('create')}>ACTIVITY CREATOR</button>
       </div>
       <Filters />
     </div>

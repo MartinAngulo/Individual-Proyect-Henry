@@ -1,6 +1,6 @@
 const config = {
-    api_domain: 'https://country-api.azurewebsites.net',
-    // api_domain: 'http://localhost:3001',
+    // api_domain: 'https://country-api.azurewebsites.net',
+    api_domain: 'http://localhost:3001',
     seasonsOptions: [
         {value:'spring', label:'Spring'},
         {value:'autumn', label:'Autumn'},
@@ -43,7 +43,7 @@ const config = {
     ],
     contFilter: (countries, prop)=>{
         return countries.filter(a=>a.continent===prop);
-    }
+    },
     
 }
 

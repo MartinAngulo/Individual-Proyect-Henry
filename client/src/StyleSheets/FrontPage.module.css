@@ -5,9 +5,8 @@
     flex-direction: column;
     padding-top: 0px;
     margin-top: 0px;
-    background-image: url('../images/backgroundMap.png');
+    background-image: url('../images/fondo.gif');
     background-size:cover;
-    background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
 }

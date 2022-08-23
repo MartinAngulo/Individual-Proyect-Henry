@@ -27,8 +27,8 @@ export default function CountryDetail() {
             <p className={styles.text}>CONTINENT: {country.continent}</p>
             <p className={styles.text}>CAPITAL: {country.capital}</p>
             <p className={styles.text}>SUBREGION: {country.subregion}</p>
-            <p className={styles.text}>AREA: {country.area}</p>
-            <p className={styles.text}>POPULATION: {country.population}</p>
+            <p className={styles.text}>AREA: {country.area} Km²</p>
+            <p className={styles.text}>POPULATION: {country.population} people</p>
           </div>
           <iframe title='map' className={styles.iframe} src={`https://maps.google.com/?ll=${country.latlng[0]},${country.latlng[1]}&z=5&t=k&output=embed`}></iframe>
         </div>

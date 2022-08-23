@@ -3,6 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
 }
 
 .loader {
@@ -20,5 +23,11 @@
 }
 
 .cont2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  font-weight: bold;
+  padding-top: 20px;
 }

@@ -6,13 +6,13 @@
     /* border: 2px solid black; */
     height: 250px;
     max-width: 16vw;
-    min-width: 320px;
+    min-width: 420px;
     padding: 0px;
     background-color: white;
 }
 
 .container2 {
-    width: 300px;
+    width: 400px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -22,7 +22,7 @@
 .img {
     padding-top: 10px;
     height: 200px;
-    width: 300px;
+    width: 400px;
 }
 
 .h1 {
