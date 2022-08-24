@@ -7,8 +7,13 @@ export const createActivity = createAsyncThunk('activities/create', async (activ
     return data.data;
 })
 
-export const getActivity = createAsyncThunk('activities/getAll', async ( thunkAPI) => {
+export const getActivity = createAsyncThunk('activities/getAll', async (thunkAPI) => {
     const data = await axios.get(`${apiConfig.api_domain}/activities`);
+    return data.data;
+});
+
+export const removeActivity = createAsyncThunk('activities/remove', async (idAct, thunkAPI) => {
+    const data = await axios.get(`${apiConfig.api_domain}/activities/delete/idAct`);
     return data.data;
 })
 
@@ -16,9 +21,9 @@ const activitiesSlice = createSlice({
     name: "activities",
     initialState: {
         status: 'not_loaded',
-        data: [],
         charge: false,
-        activities: []
+        activities: [],
+        deleteStatus: 'false'
     },
     reducers: {
         addCharge: (state) => {
@@ -31,20 +36,22 @@ const activitiesSlice = createSlice({
     extraReducers: {
         [createActivity.fulfilled]: (state, action) => {
             state.status = 'success';
-            state.data= action.payload;
         },
         [createActivity.rejected]: (state, action) => {
             state.status = 'loaded_rejected';
         },
         [getActivity.fulfilled]: (state, action) => {
-            state.activities= action.payload;
+            state.activities = action.payload;
         },
         [getActivity.rejected]: (state, action) => {
             state.status = 'loaded_rejected';
-        }
+        },
+        [removeActivity.fulfilled]: (state, action) => {
+            state.deleteStatus = true;
+        },
     }
 });
 
-export const {addCharge, resetCharge} = activitiesSlice.actions;
+export const { addCharge, resetCharge } = activitiesSlice.actions;
 
 export default activitiesSlice.reducer;

@@ -14,27 +14,11 @@ export default function Country({ data }) {
     navigate(`/detail/${id}`);
   }
 
-  // useEffect(()=>{
-  //   const config = {
-  //     origin: 'bottom',
-  //     duration: 1500,
-  //     delay: 150,
-  //     distance: '500px',
-  //     scale: 1,
-  //     easing: 'ease',
-  //   }
-    
-  //   ScrollReveal().reveal(cardRef.current,config);
-  // },[])
- 
-
   return (
     <div className={styles.container} onClick={redirect} ref={cardRef}>
       <img src={imgFlag} className={styles.img} alt='Flag' />
       <div className={styles.container2}>
-        <h1 className={styles.h1}>{name}
-          {/* <Link to={`/detail/${id}`}></Link> */}
-          </h1>
+        <h1 className={styles.h1}>{name}</h1>
         <h4 className={styles.h4}>from:<br/>{continent}</h4>
       </div>
     </div>

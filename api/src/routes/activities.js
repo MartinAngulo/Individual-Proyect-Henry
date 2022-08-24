@@ -72,12 +72,18 @@ router.post('/', async (req, res) => {
         }
         return res.status(200)
         .json(activity)
-        // .send(`${name} has been added to Tourist Activities`)
     }
     catch (err) {
         res.send(err);
     }
 });
+
+router.delete('/delete/:id', async(req, res)=>{
+    const {id} = req.params;
+    const act = await TurisActivity.findByPk(id);
+    await act.destroy();
+    res.status(201).send('Eliminado con exito');
+})
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);

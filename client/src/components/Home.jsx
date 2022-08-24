@@ -30,6 +30,7 @@ export default function Home() {
             ? <Navigate to={'/'} />
             :
             <div className={styles.cont}>
+                <p className={styles.baner}>This is my country App</p>
                 <CountryShow />
                 {/* <div>
                     <img

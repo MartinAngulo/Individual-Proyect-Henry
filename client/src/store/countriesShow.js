@@ -17,12 +17,12 @@ export const countryDetail = createAsyncThunk('countries/detail', async (country
     return country.data;
 });
 
-export const filter = createAsyncThunk('countries/filter', async (info, thunkAPI) => {
-    const country = await axios.get(`${apiConfig.api_domain}/countries/order/${info.order}?para=${info.para}`);
-    return country.data;
+export const filter = createAsyncThunk('countries/infoFilter', async (info, thunkAPI) => {
+    const countries = await axios.get(`${apiConfig.api_domain}/countries/order/${info.order}?para=${info.para}`);
+    return countries.data;
 });
 
-export const filterSeason = createAsyncThunk('countries/filter', async (season, thunkAPI) => {
+export const filterSeason = createAsyncThunk('countries/seasonfilter', async (season, thunkAPI) => {
     const country = await axios.get(`${apiConfig.api_domain}/countries/order/season/${season}`);
     return country.data;
 });
@@ -30,6 +30,7 @@ export const filterSeason = createAsyncThunk('countries/filter', async (season, 
 const countriesSlice = createSlice({
     name: "countries",
     initialState: {
+        load_status: false,
         searchStatus: 'not_loaded',
         detailStatus: 'not_loaded',
         countries: [],
@@ -44,14 +45,19 @@ const countriesSlice = createSlice({
         },
         resetFilters(state) {
             state.filters = [];
-            state.filter_not_found=false;
+            state.filter_not_found = false;
         },
         resetShow(state) {
             state.searchStatus = 'not_loaded'
+        },
+        resetDetail(state) {
+            state.detailStatus='not_loaded';
+            state.detail=[];
         }
     },
     extraReducers: {
         [getAllCountries.fulfilled]: (state, action) => {
+            state.load_status = true;
             state.countries = action.payload;
         },
         [searchCountries.fulfilled]: (state, action) => {
@@ -63,18 +69,20 @@ const countriesSlice = createSlice({
             state.detail = action.payload;
         },
         [filter.fulfilled]: (state, action) => {
-            
             state.filters = action.payload;
         },
         [filterSeason.fulfilled]: (state, action) => {
-            if(action.payload.length>0){
-                state.filter_not_found=false;
+            if (action.payload.length > 0) {
+                state.filter_not_found = false;
                 state.filters = action.payload;
             }
-            else state.filter_not_found=true;
+            else{ 
+                state.filters = [];
+                state.filter_not_found = true;
+            }
         },
     }
 });
 
-export const { addFilter, resetShow, resetFilters } = countriesSlice.actions;
+export const { addFilter, resetShow, resetFilters, resetDetail } = countriesSlice.actions;
 export default countriesSlice.reducer;

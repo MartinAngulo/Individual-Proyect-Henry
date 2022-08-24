@@ -30,7 +30,6 @@ class FrontPage extends Component {
       <div className={styles.container} >
         {this.state.load ? <LoadingPage url={'/home'} />
           : <>
-            {/* <h1>Welcome to Country's App </h1> */}
             <i className={styles.welcome}></i>
             <p className={styles.start} onClick={this.handleClick}></p>
             <span className={styles.by}>By: Martin Angulo</span>

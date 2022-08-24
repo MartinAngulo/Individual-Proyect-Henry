@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
-import { countryDetail } from '../store/countriesShow';
+import { countryDetail, resetDetail } from '../store/countriesShow';
 import styles from '../StyleSheets/CountryDetail.module.css';
 
 export default function CountryDetail() {
@@ -10,9 +10,14 @@ export default function CountryDetail() {
   const country = useSelector(state => state.countriesShow.detail);
   const detailStatus = useSelector(state => state.countriesShow.detailStatus);
   useEffect(() => {
+
     dispatch(
       countryDetail(countryId)
     )
+
+    return ()=>{
+      dispatch(resetDetail())
+    }
   }, [countryId, dispatch])
 
   return detailStatus === 'success' && (
@@ -37,7 +42,7 @@ export default function CountryDetail() {
           <div className={styles.grid}>
             {country.TurisActivities.length > 0
               && country.TurisActivities.map(actv => (
-                <p className={styles.showAct}>{actv.name}</p>
+                <p className={styles.showAct} key={actv.id}>{actv.name}</p>
               ))
             }
           </div>

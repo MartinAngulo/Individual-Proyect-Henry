@@ -1,11 +1,66 @@
+.container2 {
+    height: 100%;
+}
+
 .container {
     padding: 0;
     margin: 0;
-    margin-top: 30px;
+    margin: 100px 0 70px 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, 450px);
     gap: 40px;
     align-items: center;
-    width: 96vw;
-    justify-items: center;
+    width: 100%;
+    justify-content: center;
+    height: 100%;
+    min-height: 100%;
+}
+
+.pages {
+    margin: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 80vw 20vw;
+    background-color: gray;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+}
+
+.total {
+    width: 150px;
+    font-size: 1rem;
+}
+
+.nums{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,  20px);
+    gap: 10px;
+    width: 100vw;
+    justify-content: center;
+}
+
+.btn {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:hover {
+    background-color: black;
+    color: white;
+}
+
+.cpages {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.notFound {
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

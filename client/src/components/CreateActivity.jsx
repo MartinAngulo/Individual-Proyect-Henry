@@ -17,7 +17,9 @@ export default function CreateActivity() {
   let [season, setSeason] = useState('');
   let [country, setCountry] = useState([]);
 
-  const countriesShow = useSelector(state => state.countriesShow.countries).map(e => { return { value: e.id, label: e.name } });
+  const countriesShow = useSelector(state => state.countriesShow.countries)
+    .map(e => { return { value: e.id, label: e.name } });
+  const loadStatus = useSelector(state => state.countriesShow.load_status);
   const chargeStatus = useSelector(state => state.activities.charge);
   const activities = useSelector(state => state.activities.activities);
 
@@ -72,12 +74,14 @@ export default function CreateActivity() {
   }
 
   useEffect(() => {
-    if (countriesShow.length === 0) {
+    if (!loadStatus) {
       dispatch(getAllCountries())
       onClick();
     }
     else dispatch(getActivity());
-  }, [])
+
+    
+  }, [dispatch, loadStatus])
 
   return (
     chargeStatus ? <div className={styles.charge}><ChargePage /></div> :
@@ -134,13 +138,13 @@ export default function CreateActivity() {
             />
             <div className={styles.btns}>
               <button
-              className={disableSubmit()?styles.block:styles.button}
-              disabled={disableSubmit()}
-              type="submit">Create</button>
+                className={disableSubmit() ? styles.block : styles.button}
+                disabled={disableSubmit()}
+                type="submit">Create</button>
               <button
-              className={disableClear()?styles.block:styles.button}
-              disabled={disableClear()}
-              onClick={() => onClick()}>Clear</button>
+                className={disableClear() ? styles.block : styles.button}
+                disabled={disableClear()}
+                onClick={() => onClick()}>Clear</button>
             </div>
 
           </form>
@@ -153,7 +157,7 @@ export default function CreateActivity() {
               &&
               activities.map(activity => {
                 return (
-                  <ActivityCard data={activity} />
+                  <ActivityCard data={activity} key={activity.id}/>
                 )
               }
               )

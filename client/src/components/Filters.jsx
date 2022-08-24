@@ -8,18 +8,20 @@ import { addFilter, filter, filterSeason, resetFilters } from '../store/countrie
 
 export default function Filters() {
 
-  const dispatch = useDispatch();
-  const location = useLocation();
-
-  const countries = useSelector(state => state.countriesShow.countries)
-  // const filters = useSelector(state => state.countriesShow.filters)
-  const [values, setValues] = useState({
+  const initialValues = {
     name: '',
     population: '',
     area: '',
     continent: '',
     season: ''
-  })
+  }
+
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  const countries = useSelector(state => state.countriesShow.countries)
+  const [values, setValues] = useState(initialValues)
+  
 
   const onClear = () => {
     setValues({
@@ -37,18 +39,18 @@ export default function Filters() {
     else return true;
   }
 
-  const handleChange = async (e, prop) => {
+  const handleChange = (e, prop) => {
 
-    setValues({ ...values, [prop]: e });
+    setValues({ ...initialValues, [prop]: e });
 
     if (['name', 'population', 'area'].includes(prop)) {
       return dispatch(filter({ order: e.value, para: prop }))
     }
-    if (prop === 'continent') {
+    else if (prop === 'continent') {
       const filters = config.contFilter(countries, e.value)
       return dispatch(addFilter(filters));
     }
-    if (prop === 'season') {
+    else if (prop === 'season') {
       return dispatch(filterSeason(e.value));
     }
 

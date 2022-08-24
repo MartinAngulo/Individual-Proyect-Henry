@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import {useLocation} from 'react-router-dom';
 import { resetShow, searchCountries } from '../store/countriesShow';
 import styles from '../StyleSheets/SearchBar.module.css'
 
@@ -8,15 +9,21 @@ export default function SearchBar() {
 
   let [input, setInput] = useState('');
   const dispatch = useDispatch();
+  const location = useLocation();
+
   const OnSubmit = (data) => {
     dispatch(
       searchCountries(data)
     )
     setInput('')
-  }
+  };
   const onChange = (e) => {
     let input = e.target.value;
     setInput(input)
+  };
+  const disable=()=>{
+    if(location.pathname==='/home')return false;
+    else return true;
   }
 
   useEffect(() => {
@@ -37,18 +44,18 @@ export default function SearchBar() {
     <form onSubmit={() => OnSubmit(input)} className={styles.cont}>
       <input
         className={styles.input}
-        type="text"
+        disabled={disable()}
+        type="search"
         name='name'
         onChange={onChange}
         value={input}
         pattern='^[a-zA-Z ]*$'
         placeholder='Type a country name to search' />
-      {input.length > 0 &&
+      {/* {input.length > 0 &&
         <button
         className={styles.clear}
         onClick={()=>{setInput('')}}
-        ></button>}
-      {/* {input.length>0&&<input type="submit" value="Search" />} */}
+        ></button>} */}
     </form>
   )
 }
