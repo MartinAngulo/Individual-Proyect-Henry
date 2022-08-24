@@ -17,6 +17,7 @@ export default function CountryShow() {
   const filterError = useSelector(state => state.countriesShow.filter_not_found);
 
   const handlePages = (e) => {
+    setCpage(1);
     setTotalPages(e.value);
   }
 
@@ -47,7 +48,7 @@ export default function CountryShow() {
               && searchPag().map(e => (
                 <button
                   key={e.page.current}
-                  className={styles.btn}
+                  className={e.page.current===cPage?styles.block:styles.btn}
                   onClick={() => handlecurrentPage(e.page.current)}
                   disabled={e.page.current === cPage ? true : false}
                 >{e.page.current}</button>
@@ -57,7 +58,7 @@ export default function CountryShow() {
                 ? filterPag().map(e => (
                   <button
                     key={e.page.current}
-                    className={styles.btn}
+                    className={e.page.current===cPage?styles.block:styles.btn}
                     onClick={() => handlecurrentPage(e.page.current)}
                     disabled={e.page.current === cPage ? true : false}
                   >{e.page.current}</button>
@@ -66,7 +67,7 @@ export default function CountryShow() {
                 && countriesPag().map(e => (
                   <button
                     key={e.page.current}
-                    className={styles.btn}
+                    className={e.page.current===cPage?styles.block:styles.btn}
                     onClick={() => handlecurrentPage(e.page.current)}
                     disabled={e.page.current === cPage ? true : false}
                   >{e.page.current}</button>
@@ -117,7 +118,7 @@ export default function CountryShow() {
               && searchPag().map(e => (
                 <button
                   key={e.page.current}
-                  className={styles.btn}
+                  className={e.page.current===cPage?styles.block:styles.btn}
                   onClick={() => handlecurrentPage(e.page.current)}
                   disabled={e.page.current === cPage ? true : false}
                 >{e.page.current}</button>
@@ -127,7 +128,7 @@ export default function CountryShow() {
                 ? filterPag().map(e => (
                   <button
                     key={e.page.current}
-                    className={styles.btn}
+                    className={e.page.current===cPage?styles.block:styles.btn}
                     onClick={() => handlecurrentPage(e.page.current)}
                     disabled={e.page.current === cPage ? true : false}
                   >{e.page.current}</button>
@@ -136,7 +137,7 @@ export default function CountryShow() {
                 && countriesPag().map(e => (
                   <button
                     key={e.page.current}
-                    className={styles.btn}
+                    className={e.page.current===cPage?styles.block:styles.btn}
                     onClick={() => handlecurrentPage(e.page.current)}
                     disabled={e.page.current === cPage ? true : false}
                   >{e.page.current}</button>
