@@ -1,6 +1,6 @@
 .season, .duration, .diff, .countries {
     width: 28vw;
-    height: 1vh;
+    height: 40px;
 }
 .countries {
     margin-bottom: 10px;
@@ -13,11 +13,12 @@
 .form {
     display: grid;
     grid-template-columns: 1;
-    grid-template-rows: repeat(9, 1fr) 3fr 40px;
-    height: 64vh;
+    grid-template-rows: repeat(9, 1fr) 1fr 40px;
+    height: 50vh;
 }
 
 .label {
+    margin-top: 15px;
     padding: 0;
 }
 
@@ -46,6 +47,7 @@
 
 .btns {
     display: flex;
+    gap: 10px;
     
 }
 
@@ -106,4 +108,40 @@
     width: auto;
     gap: 10px;
     justify-content: center;
+}
+
+.cSelect {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 70px);
+    width: 25vw;
+    height: 10px;
+    align-items: center;
+    gap: 5px;
+}
+
+.cShow {
+    display: flex;
+    width:45px;
+    height: 20px;
+    margin: 0;
+    padding:0;
+    justify-content: center;
+    color: white;
+}
+
+.xbtn {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    background-color: red;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.xbtn:hover {
+    background-color: black;
 }

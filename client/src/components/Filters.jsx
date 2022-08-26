@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import Select from 'react-select'
+// import Select from 'react-select'
 import config from '../config/api'
 import styles from '../StyleSheets/Filters.module.css';
 import { addFilter, filter, filterSeason, resetFilters } from '../store/countriesShow';
@@ -13,7 +13,7 @@ export default function Filters() {
     population: '',
     area: '',
     continent: '',
-    season: ''
+    season: '',
   }
 
   const dispatch = useDispatch();
@@ -24,80 +24,127 @@ export default function Filters() {
   
 
   const onClear = () => {
-    setValues({
-      name: '',
-      population: '',
-      area: '',
-      continent: '',
-      season: ''
-    })
+    setValues(initialValues);
+    
     dispatch(resetFilters());
   };
 
   const disable=()=>{
     if(location.pathname==='/home')return false;
-    else return true;
+    else{ 
+      return true};
   }
 
   const handleChange = (e, prop) => {
 
-    setValues({ ...initialValues, [prop]: e });
+    setValues({ ...initialValues, [prop]: e.target.value });
 
     if (['name', 'population', 'area'].includes(prop)) {
-      return dispatch(filter({ order: e.value, para: prop }))
+      return dispatch(filter({ order: e.target.value, para: prop }))
     }
     else if (prop === 'continent') {
-      const filters = config.contFilter(countries, e.value)
+      const filters = config.contFilter(countries, e.target.value)
       return dispatch(addFilter(filters));
     }
     else if (prop === 'season') {
-      return dispatch(filterSeason(e.value));
+      return dispatch(filterSeason(e.target.value));
     }
 
   }
 
   return (
     <div className={styles.cont}>
-      <Select
+      {/* <Select
         value={values.name}
         className={styles.select}
         placeholder='Filter by Name'
         options={config.namefilter}
         isDisabled={disable()}
         onChange={(e) => handleChange(e, 'name')}
-      />
-      <Select
+      /> */}
+      <select
+      value={values.name}
+      className={styles.select}
+      placeholder='Select one'
+      // options={config.namefilter}
+      disabled={disable()}
+      onChange={(e) => handleChange(e, 'name')}
+      >
+        <option hidden>Filter by Name</option>
+        {config.namefilter.map(name=>(<option value={name.value}>{name.label}</option>))}
+      </select>
+      {/* <Select
         value={values.population}
         className={styles.select}
         placeholder='Filter by population'
         options={config.populationFilter}
         isDisabled={disable()}
         onChange={(e) => handleChange(e, 'population')}
-      />
-      <Select
+      /> */}
+      <select
+      value={values.population}
+      className={styles.select}
+      // options={config.populationFilter}
+      disabled={disable()}
+      onChange={(e) => handleChange(e, 'population')}
+      >
+        <option hidden>Filter by Population</option>
+        {config.populationFilter.map(popu=>(<option value={popu.value}>{popu.label}</option>))}
+      </select>
+      {/* <Select
         value={values.area}
         className={styles.select}
         placeholder='Filter by Area'
         options={config.sizeFilter}
         isDisabled={disable()}
         onChange={(e) => handleChange(e, 'area')}
-      />
-      <Select
+      /> */}
+      <select
+      value={values.area}
+      className={styles.select}
+      // options={config.sizeFilter}
+      disabled={disable()}
+      onChange={(e) => handleChange(e, 'area')}
+      >
+        <option hidden>Filter by Area</option>
+        {config.sizeFilter.map(area=>(<option value={area.value}>{area.label}</option>))}
+      </select>
+      {/* <Select
         value={values.continent}
         className={styles.select}
         placeholder='Filter by continent'
         options={config.continentFilter}
         isDisabled={disable()}
         onChange={(e) => handleChange(e, 'continent')}
-      />
-      <Select
+      /> */}
+      <select
+      value={values.continent}
+      className={styles.select}
+      // options={config.continentFilter}
+      disabled={disable()}
+      onChange={(e) => handleChange(e, 'continent')}
+      >
+        <option hidden>Filter by Continent</option>
+        {config.continentFilter.map(conti=>(<option value={conti.value}>{conti.label}</option>))}
+      </select>
+      {/* <Select
         value={values.season}
         className={styles.select}
         placeholder='Filter by Activity'
         options={config.seasonsOptions}
         isDisabled={disable()}
         onChange={(e) => handleChange(e, 'season')}
-      />
+      /> */}
+      <select
+      value={values.season}
+      className={styles.select}
+      // options={config.seasonsOptions}
+      disabled={disable()}
+      onChange={(e) => handleChange(e, 'season')}
+      >
+        <option hidden>Filter by Season</option>
+        {config.seasonsOptions.map(season=>(<option value={season.value}>{season.label}</option>))}
+      </select>
       <button 
       className={disable()?styles.block:styles.clear}
       disabled={disable()}

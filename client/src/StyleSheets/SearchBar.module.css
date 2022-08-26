@@ -1,15 +1,12 @@
 .input {
     width: 400px;
     padding-right: 10px;
-    opacity: 0.3;
-}
-
-.input:hover {
-    opacity: 1;
+    
+    background-color: lightgray;
 }
 
 .input:focus {
-    opacity: 1;
+    background-color: white;
 }
 
 .cont {

@@ -38,13 +38,13 @@ const activitiesSlice = createSlice({
             state.status = 'success';
         },
         [createActivity.rejected]: (state, action) => {
-            state.status = 'loaded_rejected';
+            state.status = 'rejected';
         },
         [getActivity.fulfilled]: (state, action) => {
             state.activities = action.payload;
         },
         [getActivity.rejected]: (state, action) => {
-            state.status = 'loaded_rejected';
+            state.status = 'rejected';
         },
         [removeActivity.fulfilled]: (state, action) => {
             state.deleteStatus = true;

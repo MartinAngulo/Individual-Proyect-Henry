@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Select from 'react-select'
+// import Select from 'react-select'
 import Country from './Country';
 import config from '../config/api';
 import styles from '../StyleSheets/CountryShow.module.css'
@@ -8,7 +8,7 @@ import styles from '../StyleSheets/CountryShow.module.css'
 export default function CountryShow() {
 
   const [cPage, setCpage] = useState(1);
-  const [totalPages, setTotalPages] = useState(15);
+  const [totalPages, setTotalPages] = useState(10);
 
   const countries = useSelector(state => state.countriesShow.countries);
   const searchResult = useSelector(state => state.countriesShow.search);
@@ -18,7 +18,7 @@ export default function CountryShow() {
 
   const handlePages = (e) => {
     setCpage(1);
-    setTotalPages(e.value);
+    setTotalPages(e.target.value);
   }
 
   const handlecurrentPage = (page) => {
@@ -27,15 +27,21 @@ export default function CountryShow() {
   }
 
   const searchPag = () => {
+    
     return config.pagination(searchResult, totalPages)
   }
   const filterPag = () => {
     return config.pagination(filters, totalPages)
   }
   const countriesPag = () => {
+    
     return config.pagination(countries, totalPages)
   }
 
+  // useEffect(() => {
+  //   if(searchStatus='success')setCpage(1);
+  // }, [])
+  
 
   return (
     <div className={styles.container2}>
@@ -75,14 +81,25 @@ export default function CountryShow() {
           }
         </div>
         <div className={styles.cpages}>
-          <label style={{color:'white', fontWeight:'bold'}}>Countries/page:</label>
-          <Select
+          <label htmlFor='pages' style={{color:'white', fontWeight:'bold'}}>Countries/page:</label>
+          {/* <Select 
+          value={totalPages}
+          id='pages'
+          placeholder='Select c/p'
+          className={styles.total}
+          options={config.pages}
+          onChange={handlePages}
+          /> */}
+          <select
             value={totalPages}
+            id='pages'
             placeholder='Select c/p'
             className={styles.total}
-            options={config.pages}
+            // options={config.pages}
             onChange={handlePages}
-          />
+          >
+            {config.pages.map(page=>(<option value={page.value}>{page.label}</option>))}
+          </select>
         </div>
       </div>
       <div className={styles.container}>

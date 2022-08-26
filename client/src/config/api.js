@@ -1,6 +1,6 @@
 const config = {
-    api_domain: 'https://country-api.azurewebsites.net',
-    // api_domain: 'http://localhost:3001',
+    // api_domain: 'https://country-api.azurewebsites.net',
+    api_domain: 'http://localhost:3001',
     seasonsOptions: [
         { value: 'spring', label: 'Spring' },
         { value: 'autumn', label: 'Autumn' },
@@ -22,10 +22,10 @@ const config = {
         { value: 5, label: '5 hours' },
     ],
     pages: [
-        { value: 15, label: '15 c/p' },
-        { value: 20, label: '20 c/p' },
-        { value: 30, label: '30 c/p' },
-        { value: 'max', label: 'All' },
+        { value: 10, label: '10 c/p' },
+        // { value: 20, label: '20 c/p' },
+        // { value: 30, label: '30 c/p' },
+        // { value: 'max', label: 'All' },
     ],
     namefilter: [
         { value: 'ASC', label: 'A-Z' },
@@ -53,19 +53,28 @@ const config = {
         // },[])
         return countries.filter(a => a.continent === prop);
     },
-    pagination: (countries, tp = 15) => {
-        let max=tp;
-        if(max==='max'){
+    pagination: (countries, tp = 10) => {
+        let max = tp;
+        if (max === 'max') {
             max = countries.length
         }
-        const maxPages = Math.ceil(countries.length / max);
+        const maxPages = 1 + Math.ceil((countries.length - 9 )/ max);
+        // console.log(countries.length, max)
 
         const paginate = [];
         for (let i = 0; i < maxPages; i++) {
-            paginate.push({
-                page: { total: maxPages, current: i + 1, next: i + 1 < maxPages ? true : false },
-                data: countries.slice(i * max, i * max + max)
-            })
+            if (i === 0) {
+                paginate.push({
+                    page: { total: maxPages, current: 1, next: i + 1 < maxPages ? true : false },
+                    data: countries.slice(0, 9)
+                })
+            }
+            else if(maxPages > 1){
+                paginate.push({
+                    page: { total: maxPages, current: i + 1, next: i + 1 < maxPages ? true : false },
+                    data: countries.slice(i * max-1, i * max + max-1)
+                })
+            }
         }
 
         return paginate;

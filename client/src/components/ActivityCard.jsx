@@ -16,7 +16,7 @@ export default function ActivityCard({ data }) {
                 <p className={stylos.text}>Duration: {data.duration} hours</p>
                 <p className={stylos.text}>Season: {data.season}</p>
             </div>
-            <div className={stylos.cont2}>
+            {data.countries&&(<div className={stylos.cont2}>
                 <p className={stylos.countries}>Countries:</p>
                 <div className={stylos.flagCont}>
                     {
@@ -32,7 +32,7 @@ export default function ActivityCard({ data }) {
 
                     }
                 </div>
-            </div>
+            </div>)}
         </div>
     )
 }

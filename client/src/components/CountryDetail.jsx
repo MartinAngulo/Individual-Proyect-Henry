@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { countryDetail, resetDetail } from '../store/countriesShow';
 import styles from '../StyleSheets/CountryDetail.module.css';
+import ActivityCard from './ActivityCard';
 
 export default function CountryDetail() {
   const { countryId } = useParams();
@@ -15,7 +16,7 @@ export default function CountryDetail() {
       countryDetail(countryId)
     )
 
-    return ()=>{
+    return () => {
       dispatch(resetDetail())
     }
   }, [countryId, dispatch])
@@ -29,6 +30,7 @@ export default function CountryDetail() {
         </div>
         <div className={styles.detail}>
           <div className={styles.parra}>
+            <p className={styles.text}>ID: {country.id}</p>
             <p className={styles.text}>CONTINENT: {country.continent}</p>
             <p className={styles.text}>CAPITAL: {country.capital}</p>
             <p className={styles.text}>SUBREGION: {country.subregion}</p>
@@ -42,7 +44,7 @@ export default function CountryDetail() {
           <div className={styles.grid}>
             {country.TurisActivities.length > 0
               && country.TurisActivities.map(actv => (
-                <p className={styles.showAct} key={actv.id}>{actv.name}</p>
+                <ActivityCard data={actv}/>
               ))
             }
           </div>

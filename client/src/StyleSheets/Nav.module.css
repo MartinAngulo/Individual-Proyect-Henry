@@ -13,7 +13,7 @@
     flex-direction: column;
     align-items: center;
     position: fixed;
-    background-color: white;
+    background-color: black;
     z-index: 1;
     width: 100vw;
 }
@@ -24,14 +24,16 @@
     margin: 0px;
     padding-top: 15px;
     padding-bottom: 15px;
+    font-weight: bold;
     width: 33vw;
     border: none;
-    background-color: white;
+    background-color: black;
+    color: white;
 }
 
 .h3:hover {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     cursor: hand;
 }
 
@@ -41,9 +43,11 @@
     margin: 0px;
     padding-top: 15px;
     padding-bottom: 15px;
+    font-weight: bold;
     width: 33vw;
     border: none;
-    background-color: white;
+    background-color: black;
+    color:white
 }
 
 /* .searchBar {
