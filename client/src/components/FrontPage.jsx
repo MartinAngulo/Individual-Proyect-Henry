@@ -41,10 +41,10 @@ class FrontPage extends Component {
               <button className={styles.start} onClick={this.handleClick}>Let's Go</button>
               <div className={styles.btnsgroup}>
                 <p className={styles.by}>By Martin Angulo</p>
-                <a className={styles.socialmediagit} href={config.links.github} target='_blank'></a>
-                <a className={styles.socialmedialin} href={config.links.lin} target='_blank'></a>
-                <a className={styles.socialmediafb} href={config.links.fb} target='_blank'></a>
-                <a className={styles.socialmediaig} href={config.links.ig} target='_blank'></a>
+                <a className={styles.socialmediagit} href={config.links.github} rel="noreferrer" target='_blank'> </a>
+                <a className={styles.socialmedialin} href={config.links.lin} rel="noreferrer" target='_blank'> </a>
+                <a className={styles.socialmediafb} href={config.links.fb} rel="noreferrer" target='_blank'> </a>
+                <a className={styles.socialmediaig} href={config.links.ig} rel="noreferrer" target='_blank'> </a>
               </div>
             </div>
           </>}
