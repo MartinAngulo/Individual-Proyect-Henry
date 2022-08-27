@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useLocation} from 'react-router-dom';
-import { resetShow, searchCountries } from '../store/countriesShow';
+import { resetPage, resetShow, searchCountries } from '../store/countriesShow';
 import styles from '../StyleSheets/SearchBar.module.css'
 
 
@@ -27,6 +27,7 @@ export default function SearchBar() {
   }
 
   useEffect(() => {
+    dispatch(resetPage());
     const OnSubmit = (data) => {
       dispatch(
         searchCountries(data)

@@ -1,14 +1,17 @@
 import React, { useState} from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import Select from 'react-select'
 import Country from './Country';
 import config from '../config/api';
 import styles from '../StyleSheets/CountryShow.module.css'
+import { changePage } from '../store/countriesShow';
 
 export default function CountryShow() {
 
-  const [cPage, setCpage] = useState(1);
+  // const [cPage, setCpage] = useState(1);
+  const cPage = useSelector(state=>state.countriesShow.currentPage)
   const [totalPages, setTotalPages] = useState(10);
+  const dispatch = useDispatch();
 
   const countries = useSelector(state => state.countriesShow.countries);
   const searchResult = useSelector(state => state.countriesShow.search);
@@ -17,13 +20,15 @@ export default function CountryShow() {
   const filterError = useSelector(state => state.countriesShow.filter_not_found);
 
   const handlePages = (e) => {
-    setCpage(1);
+    dispatch(changePage(1));
+    // setCpage(1);
     setTotalPages(e.target.value);
   }
 
   const handlecurrentPage = (page) => {
+    dispatch(changePage(page));
     window.scrollTo(0,0);
-    setCpage(page);
+    // setCpage(page);
   }
 
   const searchPag = () => {
@@ -108,20 +113,20 @@ export default function CountryShow() {
             ?
             (searchResult.length > 0
               ?
-              searchPag()[cPage - 1].data.map(country => (
+              searchPag()[cPage - 1]?.data.map(country => (
                 <Country data={country} key={country.id} />))
               :
               <h1 className={styles.notFound}>Country not found</h1>)
 
             : filters.length > 0
               ?
-              filterPag()[cPage - 1].data.map((e) => (<Country data={e} key={e.id} />))
+              filterPag()[cPage - 1]?.data.map((e) => (<Country data={e} key={e.id} />))
               :
               (filterError
                 ?
                 (<h1 className={styles.notFound}>Countries not found</h1>)
                 :
-                countriesPag()[cPage - 1].data.map(country => (
+                countriesPag()[cPage - 1]?.data.map(country => (
                   <Country data={country} key={country.id} />)))
 
         }

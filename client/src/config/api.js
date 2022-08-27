@@ -1,6 +1,12 @@
 const config = {
-    // api_domain: 'https://country-api.azurewebsites.net',
-    api_domain: 'http://localhost:3001',
+    api_domain: 'https://country-api.azurewebsites.net',
+    // api_domain: 'http://localhost:3001',
+    links: {
+        github: "https://github.com/MartinAngulo",
+        lin: "https://www.linkedin.com/in/martinangulo1194",
+        fb: "https://www.facebook.com/martin1194",
+        ig: "https://www.instagram.com/martinx1194/",
+    },
     seasonsOptions: [
         { value: 'spring', label: 'Spring' },
         { value: 'autumn', label: 'Autumn' },

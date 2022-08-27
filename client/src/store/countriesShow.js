@@ -33,11 +33,12 @@ const countriesSlice = createSlice({
         load_status: false,
         searchStatus: 'not_loaded',
         detailStatus: 'not_loaded',
+        filter_not_found: false,
         countries: [],
         search: [],
         detail: [],
         filters: [],
-        filter_not_found: false,
+        currentPage: 1,
     },
     reducers: {
         addFilter(state, action) {
@@ -51,9 +52,15 @@ const countriesSlice = createSlice({
             state.searchStatus = 'not_loaded'
         },
         resetDetail(state) {
-            state.detailStatus='not_loaded';
-            state.detail=[];
-        }
+            state.detailStatus = 'not_loaded';
+            state.detail = [];
+        },
+        changePage(state, action) {
+            state.currentPage=action.payload;
+        },
+        resetPage(state){
+            state.currentPage=1;
+        },
     },
     extraReducers: {
         [getAllCountries.fulfilled]: (state, action) => {
@@ -76,7 +83,7 @@ const countriesSlice = createSlice({
                 state.filter_not_found = false;
                 state.filters = action.payload;
             }
-            else{ 
+            else {
                 state.filters = [];
                 state.filter_not_found = true;
             }
@@ -84,5 +91,13 @@ const countriesSlice = createSlice({
     }
 });
 
-export const { addFilter, resetShow, resetFilters, resetDetail } = countriesSlice.actions;
+export const {
+    addFilter,
+    resetShow,
+    resetFilters,
+    resetDetail,
+    changePage,
+    resetPage 
+} = countriesSlice.actions;
+
 export default countriesSlice.reducer;

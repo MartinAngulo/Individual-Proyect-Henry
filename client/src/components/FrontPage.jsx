@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styles from '../StyleSheets/FrontPage.module.css'
 import { getAllCountries } from '../store/countriesShow';
 import LoadingPage from './LoadingPage';
+import config from '../config/api';
 
 
 function mapDispatchToProps(dispatch) {
@@ -25,14 +26,27 @@ class FrontPage extends Component {
     this.setState(state => state.load = true);
   }
 
+  handleLink(link) {
+    this.props.history.push(link)
+  }
+
   render() {
     return (
       <div className={styles.container} >
         {this.state.load ? <LoadingPage url={'/home'} />
           : <>
-            <i className={styles.welcome}></i>
-            <p className={styles.start} onClick={this.handleClick}></p>
-            <span className={styles.by}>By: Martin Angulo</span>
+            <p className={styles.gif} ></p>
+            <div className={styles.lateral}>
+              <h1 className={styles.h1}>Welcome to my Country App</h1>
+              <button className={styles.start} onClick={this.handleClick}>Let's Go</button>
+              <div className={styles.btnsgroup}>
+                <p className={styles.by}>By Martin Angulo</p>
+                <a className={styles.socialmediagit} href={config.links.github} target='_blank'></a>
+                <a className={styles.socialmedialin} href={config.links.lin} target='_blank'></a>
+                <a className={styles.socialmediafb} href={config.links.fb} target='_blank'></a>
+                <a className={styles.socialmediaig} href={config.links.ig} target='_blank'></a>
+              </div>
+            </div>
           </>}
       </div>
     );

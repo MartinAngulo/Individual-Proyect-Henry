@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 // import Select from 'react-select'
 import config from '../config/api'
 import styles from '../StyleSheets/Filters.module.css';
-import { addFilter, filter, filterSeason, resetFilters } from '../store/countriesShow';
+import { addFilter, filter, filterSeason, resetFilters, resetPage } from '../store/countriesShow';
 
 export default function Filters() {
 
@@ -40,13 +40,16 @@ export default function Filters() {
     setValues({ ...initialValues, [prop]: e.target.value });
 
     if (['name', 'population', 'area'].includes(prop)) {
+      dispatch(resetPage());
       return dispatch(filter({ order: e.target.value, para: prop }))
     }
     else if (prop === 'continent') {
-      const filters = config.contFilter(countries, e.target.value)
+      dispatch(resetPage());
+      const filters = config.contFilter(countries, e.target.value);
       return dispatch(addFilter(filters));
     }
     else if (prop === 'season') {
+      dispatch(resetPage());
       return dispatch(filterSeason(e.target.value));
     }
 
@@ -88,8 +91,8 @@ export default function Filters() {
       disabled={disable()}
       onChange={(e) => handleChange(e, 'population')}
       >
-        <option hidden>Filter by Population</option>
-        {config.populationFilter.map(popu=>(<option value={popu.value}>{popu.label}</option>))}
+        <option key='aa' hidden>Filter by Population</option>
+        {config.populationFilter.map((popu,i)=>(<option key={`${i}-popu`}value={popu.value}>{popu.label}</option>))}
       </select>
       {/* <Select
         value={values.area}
@@ -106,8 +109,8 @@ export default function Filters() {
       disabled={disable()}
       onChange={(e) => handleChange(e, 'area')}
       >
-        <option hidden>Filter by Area</option>
-        {config.sizeFilter.map(area=>(<option value={area.value}>{area.label}</option>))}
+        <option key='aaa' hidden>Filter by Area</option>
+        {config.sizeFilter.map((area,i)=>(<option key={`${i}-area`} value={area.value}>{area.label}</option>))}
       </select>
       {/* <Select
         value={values.continent}
@@ -124,8 +127,8 @@ export default function Filters() {
       disabled={disable()}
       onChange={(e) => handleChange(e, 'continent')}
       >
-        <option hidden>Filter by Continent</option>
-        {config.continentFilter.map(conti=>(<option value={conti.value}>{conti.label}</option>))}
+        <option key='aaa' hidden>Filter by Continent</option>
+        {config.continentFilter.map((conti,i)=>(<option key={`${i}-conti`} value={conti.value}>{conti.label}</option>))}
       </select>
       {/* <Select
         value={values.season}
@@ -142,8 +145,8 @@ export default function Filters() {
       disabled={disable()}
       onChange={(e) => handleChange(e, 'season')}
       >
-        <option hidden>Filter by Season</option>
-        {config.seasonsOptions.map(season=>(<option value={season.value}>{season.label}</option>))}
+        <option key='aaaa' hidden>Filter by Season</option>
+        {config.seasonsOptions.map((season,i)=>(<option key={`${i}-season`} value={season.value}>{season.label}</option>))}
       </select>
       <button 
       className={disable()?styles.block:styles.clear}
