@@ -16,6 +16,10 @@ export default function CreateActivity() {
   let [dura, setDura] = useState('');
   let [season, setSeason] = useState('');
   let [country, setCountry] = useState([]);
+  let [error, setError] = useState({
+    name:'',
+    countries: ''
+  })
 
   const countriesShow = useSelector(state => state.countriesShow.countries)
   // .map(e => { return { value: e.id, label: e.name } });
@@ -27,6 +31,17 @@ export default function CreateActivity() {
     cb(e.target.value);
   }
   const handleName = (e) => {
+    if(e.target.value.length<3)setError(state=>{return {
+      ...state, name: 'Name require min 3 letters'}})
+    else if(activities.map(e=>e.name).includes(e.target.value.toUpperCase())){
+      setError(state=>{return {
+        ...state, name: "Activity's name already exists"}})
+    }
+    else setError({
+      name:'',
+      countries: ''
+    })
+
     setName(e.target.value);
   }
 
@@ -49,7 +64,7 @@ export default function CreateActivity() {
   // } alert
 
   const disableSubmit = () => {
-    if (name.length < 3 || !dif || !dura || !season || country.length === 0) return true;
+    if (name.length < 3 || !dif || !dura || !season || country.length === 0||error.name!=="") return true;
     else return false;
   }
   const disableClear = () => {
@@ -63,6 +78,10 @@ export default function CreateActivity() {
     setDura('');
     setSeason('');
     setCountry([]);
+    setError({
+      name:'',
+      countries: ''
+    })
   }
 
   const onSubmit = e => {
@@ -86,6 +105,14 @@ export default function CreateActivity() {
     //   alert('Invalid Information')
     //   onClick();
     // }
+  }
+
+  const handleCountries = (e)=>{
+    if(country.length===6){
+      setError(state=>{return {
+        ...state, countries: 'Select max 6 countries for activity'
+      }})
+    }else setCountry(state => [...state, e.target.value])
   }
 
   useEffect(() => {
@@ -113,6 +140,7 @@ export default function CreateActivity() {
               pattern='^[a-zA-Z ]{3,15}$'
               placeholder="Type an activity's name, min 3 letters"
             />
+            <label className={styles.error}>{error.name}</label>
 
             <label className={styles.label}>Difficulty: </label>
             {/* <Select
@@ -190,12 +218,13 @@ export default function CreateActivity() {
               // multiple
               // size={10}
               // options={countriesShow}
-              onChange={(e) => setCountry(state => [...state, e.target.value])}
+              onChange={handleCountries}
             >
               <option hidden>Select countries where can practice this</option>
               {countriesShow.filter((e) => !country.includes(e.id))
                 .map(c => (<option value={c.id}>{c.name}</option>))}
             </select>
+            <label className={styles.error}>{error.countries}</label>
     
             <div className={styles.btns}>
               <button

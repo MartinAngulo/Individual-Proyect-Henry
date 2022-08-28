@@ -26,3 +26,11 @@
 .clear:hover {
     opacity: 1;
 }
+
+@media screen and (max-width: 400px) {
+    .input {
+        height: 40px;
+        width: 80vw;
+        margin-top: 20px;
+    }
+}

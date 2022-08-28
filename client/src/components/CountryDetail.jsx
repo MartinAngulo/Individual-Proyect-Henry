@@ -26,7 +26,7 @@ export default function CountryDetail() {
       <div className={styles.card}>
         <div className={styles.title}>
           <h1 className={styles.name}>{country.name} DETAILS</h1>
-          <img className={styles.flag} src={country.imgFlag} alt='flag' />
+          <img className={styles.flag} src={country.imgFlag} alt={country.name} title={country.name}/>
         </div>
         <div className={styles.detail}>
           <div className={styles.parra}>

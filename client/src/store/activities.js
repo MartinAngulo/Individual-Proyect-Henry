@@ -21,6 +21,7 @@ const activitiesSlice = createSlice({
     name: "activities",
     initialState: {
         status: 'not_loaded',
+        postStatus: 'not_loaded',
         charge: false,
         activities: [],
         deleteStatus: 'false'
@@ -38,7 +39,7 @@ const activitiesSlice = createSlice({
             state.status = 'success';
         },
         [createActivity.rejected]: (state, action) => {
-            state.status = 'rejected';
+            state.postStatus = action.payload;
         },
         [getActivity.fulfilled]: (state, action) => {
             state.activities = action.payload;

@@ -100,6 +100,7 @@ export default function CountryShow() {
             id='pages'
             placeholder='Select c/p'
             className={styles.total}
+            disabled
             // options={config.pages}
             onChange={handlePages}
           >

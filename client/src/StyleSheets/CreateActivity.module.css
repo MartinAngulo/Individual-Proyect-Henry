@@ -1,12 +1,12 @@
 .season, .duration, .diff, .countries {
     width: 28vw;
-    height: 40px;
+    height: 30px;
 }
 .countries {
     margin-bottom: 10px;
 }
 .name {
-    height: 35px;
+    height: 25px;
     width: 28vw;
 }
 
@@ -20,25 +20,26 @@
 .label {
     margin-top: 15px;
     padding: 0;
+    font-size: 0.8rem;
 }
 
 .create {
     padding: 30px;
     justify-self: center;
-    align-self: center;
     background-color: white;
     width: 30vw;
     height: 70vh;
+    margin-top: 20px;
 }
 
 .main {
     position: relative;
-    top: 115px;
+    top: 105px;
     display: grid;
     grid-template-columns: 40% 60%;
-    align-items: center;
+    align-items: flex-start;
     background-color: black;
-    height: 90vh;
+    height: 100%;
 }
 
 .charge {
@@ -68,6 +69,7 @@
     background-color: black;
     color: white;
     border: 2px solid black;
+    cursor: pointer;
 
 }
 
@@ -92,6 +94,7 @@
     flex-direction: column;
     background-color: white;
     padding: 30px;
+    margin-top: 20px;
 }
 
 .list {
@@ -100,6 +103,7 @@
     display: flex;
     justify-content: center;
     padding-bottom: 10px;
+    font-size: 1.5rem;
 }
 
 .countries {
@@ -144,4 +148,10 @@
 
 .xbtn:hover {
     background-color: black;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+    font-size: 0.7rem;
 }

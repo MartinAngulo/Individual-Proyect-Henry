@@ -29,6 +29,7 @@
 .clear:hover {
     background-color: white;
     color: black;
+    cursor: pointer;
 }
 
 .block {
@@ -38,4 +39,15 @@
     justify-content: center;
     align-items: center;
     font-size: 1rem;
+}
+
+@media screen and (max-width: 400px) {
+    .cont {
+        margin-top: 80px;
+        gap: 10px;
+        grid-template-columns: 30vw 30vw 40vw;
+    }
+    .select {
+        width: 30vw;
+    }
 }

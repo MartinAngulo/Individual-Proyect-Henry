@@ -21,6 +21,7 @@
     left: 0;
     display: grid;
     grid-template-columns: 80vw 20vw;
+    gap: 10px;
     background-color: gray;
     height: 50px;
     width: 100%;
@@ -29,13 +30,14 @@
 
 .total {
     height: 30px;
-    width: 150px;
+    width: 80px;
     font-size: 1rem;
     opacity: 0.5;
 }
 
 .total:focus {
 opacity: 1;
+cursor: pointer;
 }
 
 .nums{
@@ -58,6 +60,7 @@ opacity: 1;
 .btn:hover {
     background-color: black;
     color: white;
+    cursor: pointer;
 }
 
 .block {

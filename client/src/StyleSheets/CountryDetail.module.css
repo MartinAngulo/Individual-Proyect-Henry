@@ -16,8 +16,9 @@
     width: 65vw;
     align-items: center;
     background-color: white;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 80vh;
+    backdrop-filter: blur(20px);
 }
 
 .detail {
@@ -31,17 +32,18 @@
 .title {
     display: flex;
     align-items: center;
+    margin: 0 15px 0 15px;    
 }
 
 .name {
-    font-size: 4rem;
+    font-size: 3rem;
     margin: 20px 0 20px 0;
     padding: 0;
 }
 
 .flag {
     height: 80px;
-    padding-left: 50px;
+    padding-left: 20px;
 }
 
 .parra {
@@ -53,6 +55,9 @@
 
 .text {
     font-size: 1.2rem;
+    padding: 5px;
+    margin: 0;
+
 }
 
 .iframe {
@@ -62,8 +67,8 @@
 }
 
 .turis {
-    font-size: 1.5rem;
-    margin: 10px 0 10px 0;
+    font-size: 1.2rem;
+    
 }
 
 .showAct {

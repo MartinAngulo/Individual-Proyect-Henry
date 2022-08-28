@@ -1,11 +1,11 @@
 .cont2 {
     width: 96vw;
-    display:grid;
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr));
     align-items: center;
     height: 30px;
     font-weight: bold;
-    padding:0 0 15px 0;
+    padding: 0 0 15px 0;
 }
 
 .cont {
@@ -35,6 +35,7 @@
     background-color: white;
     color: black;
     cursor: hand;
+    cursor: pointer;
 }
 
 .block {
@@ -47,18 +48,24 @@
     width: 33vw;
     border: none;
     background-color: black;
-    color:white
+    color: white
 }
 
-/* .searchBar {
-    width: 33vw;
-    border: none;
-    background-color: white;
-    margin: 0;
-
-
+@media screen and (max-width: 400px) {
+    .cont2 {
+        display: flex;
+        flex-direction: column;
+    }
+    .btns {
+        display: flex;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+    }
+    .h3{
+        width: 50vw;
+    }
+    .block{
+        width: 50vw;
+    }
 }
-
-.searchBar:hover {
-    background-color: black;
-} */

@@ -12,12 +12,12 @@ export default function Nav() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const disabled = (path)=>{
-    if(location.pathname===`/${path}`){
+  const disabled = (path) => {
+    if (location.pathname === `/${path}`) {
       return true;
     }
     else return false;
-  } 
+  }
   const handleClick = (path) => {
     dispatch(
       resetShow()
@@ -34,15 +34,17 @@ export default function Nav() {
         <div className={styles.searchBar}>
           <SearchBar />
         </div>
-        <button
-        className={disabled('home')?styles.block:styles.h3}
-        disabled={disabled('home')}
-        onClick={(e)=>handleClick('home')}>HOME</button>
-        <button
-        className={disabled('create')?styles.block:styles.h3}
-        disabled={disabled('create')}
-        onClick={(e)=>handleClick('create')}>ACTIVITY CREATOR</button>
-      </div>
+        <div className={styles.btns}>
+          <button
+            className={disabled('home') ? styles.block : styles.h3}
+            disabled={disabled('home')}
+            onClick={(e) => handleClick('home')}>HOME</button>
+          <button
+            className={disabled('create') ? styles.block : styles.h3}
+            disabled={disabled('create')}
+            onClick={(e) => handleClick('create')}>ACTIVITY CREATOR</button>
+        </div>
+      </div> 
       <Filters />
     </div>
   )
