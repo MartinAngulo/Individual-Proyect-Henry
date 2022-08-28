@@ -37,7 +37,7 @@ export default function CountryDetail() {
             <p className={styles.text}>AREA: {country.area} Km²</p>
             <p className={styles.text}>POPULATION: {country.population} people</p>
           </div>
-          <iframe title='map' className={styles.iframe} src={`https://maps.google.com/?ll=${country.latlng[0]},${country.latlng[1]}&z=5&t=k&output=embed`}></iframe>
+          <iframe title={`${country.name} map`} className={styles.iframe} src={`https://maps.google.com/?ll=${country.latlng[0]},${country.latlng[1]}&z=5&t=k&output=embed`}></iframe>
         </div>
         <div className={styles.atv}>
           <p className={styles.turis}>Turist Activitites:</p>

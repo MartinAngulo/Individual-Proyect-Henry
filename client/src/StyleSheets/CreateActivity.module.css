@@ -168,9 +168,14 @@
     .form {
         display: flex;
         flex-wrap: wrap;
+        gap: 10px;
+    }
+    .name, .diff, .duration, .season {
+        width: 65vw;
     }
     .showAct {
         width: 100vw;
+        height: auto;
     }
     .btns {
         margin-bottom: 10px;
@@ -180,5 +185,17 @@
         margin-bottom: 10px;
         padding: 0;
         height: 20px;
+    }
+    .cSelect {
+        width: 80vw;
+    }
+    .error {
+        padding: 0;
+        margin: 0;
+        width: 90vw;
+    }
+    .countries {
+        width: 90vw;
+        height: auto;
     }
 }

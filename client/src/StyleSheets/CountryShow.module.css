@@ -18,13 +18,12 @@
 
 .pages {
     margin: 0;
-    left: 0;
     display: grid;
     grid-template-columns: 80vw 20vw;
     gap: 10px;
     background-color: gray;
     height: 50px;
-    width: 100%;
+    width: 100vw;
     align-items: center;
 }
 
@@ -86,14 +85,35 @@ cursor: pointer;
 @media screen and (max-width: 400px){
     .nums {
         justify-self: center;
-        width: 70vw;
+        width: 65vw;
+        margin: 0;
+        padding: 0;
     }
     .pages {
-        height: 100px
+        display: grid;
+        grid-template-columns: 70% 30%;
+        height: 100px;
+        width: 100%;
+        gap: 5px;
+        justify-self: center;
+        justify-content: center;
     }
     .cpages {
         flex-direction: column;
         width: 20vw;
         font-size: 0.8rem;
+        align-items: center;
+        justify-self: center;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        justify-items: center;
+        width: 100%;
+        
+    }
+    .container2{
+        width: 100vw;
     }
 }

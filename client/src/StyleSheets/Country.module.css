@@ -5,8 +5,8 @@
     align-items: center;
     /* border: 2px solid black; */
     height: 250px;
-    max-width: 16vw;
-    min-width: 420px;
+    /* max-width: 16vw; */
+    min-width: 380px;
     padding: 0px;
     background-color: white;
 }
@@ -48,5 +48,14 @@
 @media screen and (max-width: 400px){
     .container2 {
         width: 300px;
+        padding-bottom: 10px;
+    }
+    .img {
+        width: 350px;
+        height: 150px;
+    }
+    .container {
+        width: 90vw;
+        height: auto;
     }
 }

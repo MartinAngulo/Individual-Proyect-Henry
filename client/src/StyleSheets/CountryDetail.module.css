@@ -67,8 +67,7 @@
 }
 
 .turis {
-    font-size: 1.2rem;
-    
+    font-size: 1.2rem; 
 }
 
 .showAct {
@@ -100,6 +99,11 @@
     .card {
         width: 100vw;
         margin-top: 100px;
+        gap: 10px;
+        justify-content: stretch;
+    }
+    .title{
+        margin-top: 10px;
     }
     .name {
         font-size: 2rem;
@@ -109,10 +113,11 @@
         height: 50px;
     }
     .text {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
     .detail {
-        flex-direction: column;
+        /* flex-direction: column; */
+        width: 98vw;
     }
     .iframe {
         width: 60vw;
@@ -120,5 +125,8 @@
     }
     .turis {
         margin-top: 20px;
+    }
+    .atv {
+
     }
 }
