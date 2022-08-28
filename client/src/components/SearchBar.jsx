@@ -26,6 +26,11 @@ export default function SearchBar() {
     else return true;
   }
 
+  const enter = (e)=>{
+    if(e.key==='Enter')e.preventDefault();
+    // return dispatch(searchCountries(input))
+  }
+
   useEffect(() => {
     dispatch(resetPage());
     const OnSubmit = (data) => {
@@ -48,6 +53,7 @@ export default function SearchBar() {
         disabled={disable()}
         type="search"
         name='name'
+        onKeyDown={enter}
         onChange={onChange}
         value={input}
         pattern='^[a-zA-Z ]*$'
