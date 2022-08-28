@@ -82,3 +82,18 @@ cursor: pointer;
     color: white;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+@media screen and (max-width: 400px){
+    .nums {
+        justify-self: center;
+        width: 70vw;
+    }
+    .pages {
+        height: 100px
+    }
+    .cpages {
+        flex-direction: column;
+        width: 20vw;
+        font-size: 0.8rem;
+    }
+}
