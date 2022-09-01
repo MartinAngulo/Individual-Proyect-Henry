@@ -32,7 +32,7 @@ export default function CreateActivity() {
   }
   const handleName = (e) => {
     if(e.target.value.length<3)setError(state=>{return {
-      ...state, name: 'Name require min 3 letters'}})
+      ...state, name: 'Name require min 3 letters'}});
     else if(activities.map(e=>e.name).includes(e.target.value.toUpperCase())){
       setError(state=>{return {
         ...state, name: "Activity's name already exists"}})
@@ -41,8 +41,10 @@ export default function CreateActivity() {
       name:'',
       countries: ''
     })
-
-    setName(e.target.value);
+    
+    if(e.target.value.length>20)setError(state=>{return {
+      ...state, name: 'Name require max 20 letters'}});
+    else setName(e.target.value);
   }
 
   // const validation = ({name, difficulty, duration, season, countries}) => {
@@ -112,7 +114,12 @@ export default function CreateActivity() {
       setError(state=>{return {
         ...state, countries: 'Select max 6 countries for activity'
       }})
-    }else setCountry(state => [...state, e.target.value])
+    }else {
+      setCountry(state => [...state, e.target.value]);
+      // setError(state=>{return {
+      //     ...state, countries: ''
+      //   }})
+    }
   }
 
   useEffect(() => {
@@ -137,7 +144,7 @@ export default function CreateActivity() {
               className={styles.name}
               value={name} id='name'
               onChange={handleName}
-              pattern='^[a-zA-Z ]{3,15}$'
+              pattern='^[a-zA-Z ]{3,20}$'
               placeholder="Type an activity's name, min 3 letters"
             />
             <label className={styles.error}>{error.name}</label>
@@ -245,6 +252,9 @@ export default function CreateActivity() {
                   <div style={{ display: 'flex', border: '2px solid black', padding: '2px', gap: '2px' }}>
                     <img className={styles.cShow} src={countriesShow.find(f => f.id === e).imgFlag} title={countriesShow.find(f => f.id === e).name} alt='flag'/>
                     <button onClick={() => {
+                      if(country.length===6)setError(state=>{return {
+                        ...state, countries: ''
+                      }})
                       setCountry(state => state.filter(j => j !== e))
                     }} className={styles.xbtn}>x</button>
                   </div>))

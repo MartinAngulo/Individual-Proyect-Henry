@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component} from 'react';
+import { connect} from 'react-redux';
 import styles from '../StyleSheets/FrontPage.module.css'
 import { getAllCountries } from '../store/countriesShow';
 import LoadingPage from './LoadingPage';
 import config from '../config/api';
+
 
 
 function mapDispatchToProps(dispatch) {
@@ -31,6 +32,7 @@ class FrontPage extends Component {
   }
 
   render() {
+  
     return (
       <div className={styles.container} >
         {this.state.load ? <LoadingPage url={'/home'} />

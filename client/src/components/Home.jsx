@@ -3,7 +3,7 @@ import CountryShow from './CountryShow';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import styles from '../StyleSheets/Home.module.css';
-import { getAllCountries } from '../store/countriesShow';
+import { changePage, getAllCountries } from '../store/countriesShow';
 
 export default function Home() {
     const countries = useSelector(state => state.countriesShow.countries);
@@ -23,6 +23,7 @@ export default function Home() {
     // },[]);
     useEffect(() => {
         if(countries.length===0)dispatch(getAllCountries());
+        dispatch(changePage(1));
     }, [countries, dispatch])
 
     return (

@@ -1,6 +1,6 @@
 const config = {
-    api_domain: 'https://country-api.azurewebsites.net',
-    // api_domain: 'http://localhost:3001',
+    // api_domain: 'https://country-api.azurewebsites.net',
+    api_domain: 'http://localhost:3001',
     links: {
         github: "https://github.com/MartinAngulo",
         lin: "https://www.linkedin.com/in/martinangulo1194",
