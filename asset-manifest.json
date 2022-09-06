@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/countryApp/static/css/main.fb3287d7.css",
-    "main.js": "/countryApp/static/js/main.2ad6a6b6.js",
-    "static/js/787.c4e7f8f9.chunk.js": "/countryApp/static/js/787.c4e7f8f9.chunk.js",
-    "static/media/world.gif": "/countryApp/static/media/world.d8cee618c6fd8f33ed44.gif",
-    "static/media/mundo sprite.png": "/countryApp/static/media/mundo sprite.d981cd8d1eb7d7f30c32.png",
-    "static/media/baner.jpg": "/countryApp/static/media/baner.d6741cd7f968620a9161.jpg",
-    "static/media/loading.png": "/countryApp/static/media/loading.76624d12a655a25e0296.png",
-    "static/media/OleoScriptSwashCaps-Bold.ttf": "/countryApp/static/media/OleoScriptSwashCaps-Bold.40b6a94577debd3a717c.ttf",
-    "static/media/git.png": "/countryApp/static/media/git.7006922a71cf27685ac1.png",
-    "static/media/ig.png": "/countryApp/static/media/ig.df150c6ee6c949d286a0.png",
-    "static/media/lin.png": "/countryApp/static/media/lin.3f8db2958fddf6835d22.png",
-    "index.html": "/countryApp/index.html",
-    "main.fb3287d7.css.map": "/countryApp/static/css/main.fb3287d7.css.map",
-    "main.2ad6a6b6.js.map": "/countryApp/static/js/main.2ad6a6b6.js.map",
-    "787.c4e7f8f9.chunk.js.map": "/countryApp/static/js/787.c4e7f8f9.chunk.js.map"
+    "main.css": "/Individual-Proyect-Henry/client/static/css/main.66c09c34.css",
+    "main.js": "/Individual-Proyect-Henry/client/static/js/main.0e85ad76.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/Individual-Proyect-Henry/client/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/world.gif": "/Individual-Proyect-Henry/client/static/media/world.d8cee618c6fd8f33ed44.gif",
+    "static/media/mundo sprite.png": "/Individual-Proyect-Henry/client/static/media/mundo sprite.d981cd8d1eb7d7f30c32.png",
+    "static/media/baner.jpg": "/Individual-Proyect-Henry/client/static/media/baner.d6741cd7f968620a9161.jpg",
+    "static/media/loading.png": "/Individual-Proyect-Henry/client/static/media/loading.76624d12a655a25e0296.png",
+    "static/media/OleoScriptSwashCaps-Bold.ttf": "/Individual-Proyect-Henry/client/static/media/OleoScriptSwashCaps-Bold.40b6a94577debd3a717c.ttf",
+    "static/media/git.png": "/Individual-Proyect-Henry/client/static/media/git.7006922a71cf27685ac1.png",
+    "static/media/ig.png": "/Individual-Proyect-Henry/client/static/media/ig.df150c6ee6c949d286a0.png",
+    "static/media/lin.png": "/Individual-Proyect-Henry/client/static/media/lin.3f8db2958fddf6835d22.png",
+    "index.html": "/Individual-Proyect-Henry/client/index.html",
+    "main.66c09c34.css.map": "/Individual-Proyect-Henry/client/static/css/main.66c09c34.css.map",
+    "main.0e85ad76.js.map": "/Individual-Proyect-Henry/client/static/js/main.0e85ad76.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/Individual-Proyect-Henry/client/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb3287d7.css",
-    "static/js/main.2ad6a6b6.js"
+    "static/css/main.66c09c34.css",
+    "static/js/main.0e85ad76.js"
   ]
 }
