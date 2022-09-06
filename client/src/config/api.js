@@ -1,6 +1,6 @@
 const config = {
-    // api_domain: 'http:1//ec2-54-172-224-92.compute-1.amazonaws.com:3001',
-    api_domain: 'http://localhost:3001',
+    api_domain: 'http:1//ec2-54-172-224-92.compute-1.amazonaws.com:3001',
+    // api_domain: 'http://localhost:3001',
     links: {
         github: "https://github.com/MartinAngulo",
         lin: "https://www.linkedin.com/in/martinangulo1194",
@@ -57,8 +57,6 @@ const config = {
         return countries.filter(a => a.continent === prop);
     },
     order: (countries, order) => { //order={order:'ASC||DESC', para: "name||population||area"}
-        // switch (order.para) {
-        //     case 'name':
                 if (order.order === 'ASC') {
                     return [...countries].sort((a, b) => {
                         if (a[order.para] > b[order.para]) {
@@ -81,29 +79,6 @@ const config = {
                         return 0;
                     })
                 }
-            // case 'population':
-            //     if (order.order === 'ASC') {
-            //         return countries.sort((a, b) => {
-            //             return a.population - b.population
-            //         })
-            //     }
-            //     else {
-            //         return countries.sort((a, b) => {
-            //             return b.population - a.population
-            //         })
-            //     }
-            // case 'area':
-            //     if (order.order === 'ASC') {
-            //         return countries.sort((a, b) => {
-            //             return a.area - b.area
-            //         })
-            //     }
-            //     else {
-            //         return countries.sort((a, b) => {
-            //             return b.area - a.area
-            //         })
-            //     }
-        // }
     },
     pagination: (countries, tp = 10) => {
         let max = tp;
