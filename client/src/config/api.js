@@ -1,6 +1,6 @@
 const config = {
     //api_domain: 'http://ec2-54-172-224-92.compute-1.amazonaws.com:3001',
-    api_domain: 'http://localhost:3001',
+    api_domain: '54.172.224.92:3001',
     links: {
         github: "https://github.com/MartinAngulo",
         lin: "https://www.linkedin.com/in/martinangulo1194",
